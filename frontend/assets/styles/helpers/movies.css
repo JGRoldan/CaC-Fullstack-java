@@ -1,0 +1,14 @@
+.card-img-top {
+    max-width: 400px;
+    height: 400px;
+    object-fit:cover;
+}
+
+.card-title-hover {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-title-hover {
+    opacity: 1; 
+}
