@@ -1,0 +1,8 @@
+.horizontal-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scrollable .row {
+    display: flex;
+}
