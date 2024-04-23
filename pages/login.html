@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in Page</title>
     <!-- Bootstrap CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/styles/main.css">    
 </head>
     <body>
         <div class="register-section d-flex flex-column justify-content-between align-items-start">
             <!-- Logo a la izquierda -->
-            <a class="navbar-brand" href="../index.html">
-                <img src="..." width="30" height="30" alt="Logo de pagina">
+            <a class="navbar-brand text-white p-2" href="../index.html" data-aos="fade-right" data-aos-duration="1000">
+                <i class="bi bi-film"></i>
+                <span class="logo-text">
+                    CAC-Movies
+                </span>
             </a>
             <form class="register-form align-self-center" style="background-color: rgb(243, 243, 243); padding: 20px;">
                 <div class="mb-3">
@@ -25,8 +30,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary container-fluid">Iniciar sesion</button>
             </form>
-            <h2 class="align-self-center mt-3 text-white">footer</h2>
-        </div>
+            <span class="align-self-center mt-3 mb-3 text-white">Designed by Grupo10 - CaC 2024</span>        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 </html>
