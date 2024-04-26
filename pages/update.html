@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/styles/main.css">
     </head>
-    <body>
+    <body style="height: 100vh; overflow: hidden;">
         <!-- Hero section -->
         <section>
             <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -33,7 +33,7 @@
                 </div>
             </nav>
         </section>
-        <section class="overflow-hidden"   style="margin-top: 100px;">
+        <section class="update-section" style="margin-top: 50px;">
             <h2 >Cargar pelicula</h2>
             <form>
                 <div class="row">
@@ -60,11 +60,8 @@
         
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
-        </section>
-        
-        <section>
             <h4 class="text-center">Listado de peliculas</h4>
-            <table class="table">
+            <table class="table table-light">
                 <thead>
                   <tr>
                     <th scope="col">Titulo</th>
@@ -106,7 +103,7 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
+            </table>
         </section>
         
         <!-- Option 1: Bootstrap Bundle with Popper -->
