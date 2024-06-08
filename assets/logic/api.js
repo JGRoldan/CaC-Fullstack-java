@@ -11,7 +11,6 @@ const fetchApiMovies = async (numPage) => {
 
     const response = await fetch(URL, options)
     const data = response.json()
-
     return data
 }
 

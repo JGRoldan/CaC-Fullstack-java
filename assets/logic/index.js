@@ -4,6 +4,11 @@ import {fetchApiMovies , fetchTopRatedMovies} from './api.js'
 const cargarPeliculas = async (numPage = 1) =>{
     const {results} = await fetchApiMovies(numPage)
     const peliculasRender = document.querySelector('.peliculas-render')
+    
+    /*Script para obtener datos en  formato SQL*/
+    // results.forEach(({poster_path, title, overview, release_date, vote_average}) =>{
+    //     console.log(`("${title}", "${overview}", "https://image.tmdb.org/t/p/w500${poster_path}", "${release_date}", ${vote_average}),`)
+    // })
 
     peliculasRender.innerHTML = ''
 
