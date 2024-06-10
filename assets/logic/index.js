@@ -36,6 +36,12 @@ const cargarTopPeliculas = async () =>{
     const {results} = await fetchTopRatedMovies()
     const peliculasRender = document.querySelector('.top-peliculas')
 
+
+    /*Script para obtener datos en  formato SQL*/
+    // results.forEach(({poster_path, title, overview, release_date, vote_average}) =>{
+    //     console.log(`("${title}", "${overview}", "https://image.tmdb.org/t/p/w500${poster_path}", "${release_date}", ${vote_average}),`)
+    // })
+
     results.forEach( ({poster_path, title}) => {
         const peliculaHTML = renderizar({ poster_path, title });
         peliculasRender.innerHTML += peliculaHTML;
