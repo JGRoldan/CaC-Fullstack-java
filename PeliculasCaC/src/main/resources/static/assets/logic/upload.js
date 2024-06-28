@@ -1,4 +1,5 @@
 import { fetchUploadPelicula } from "./api.js"
+import { swalAlert } from "./popup.js"
 import { cargarPeliculas } from "./update.js"
 
 const uploadPelicula = () =>{
@@ -23,6 +24,8 @@ const uploadPelicula = () =>{
         fetchUploadPelicula(nuevaPelicula)
         .then(() => cargarPeliculas())
         .catch(error => console.error('Error al subir la película:', error));
+
+        swalAlert('Pelicula agregada correctamente.')
 
         form.reset() 
     })

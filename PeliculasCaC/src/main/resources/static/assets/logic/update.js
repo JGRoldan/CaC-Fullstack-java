@@ -1,4 +1,5 @@
 import {fetchAllMovies, deletePelicula} from './api.js'
+import { swalAlert } from './popup.js'
 
 const renderizar = (pelicula, tbody) =>{
     const tr = document.createElement('tr')
@@ -37,12 +38,15 @@ const cargarPeliculas = async () =>{
 
 const editarPelicula = (id) => {
     console.log(`Editar pelicula con id: ${id}`)
+    swalAlert('Pelicula editada correctamente.')
 }
 
 const borrarPelicula = (id) => {
     deletePelicula(id)
         .then(() => cargarPeliculas())
-        .catch(error => console.error('Error al eliminar la película:', error));
+        .catch(error => console.error('Error al eliminar la película:', error))
+    
+    swalAlert('Pelicula borrada correctamente.')
 }
 
 document.addEventListener('DOMContentLoaded', () => {
