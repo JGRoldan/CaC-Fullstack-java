@@ -1,0 +1,11 @@
+.edit-icon, .delete-icon{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.edit-icon{
+    color:rgb(75, 188, 75);
+}
+.delete-icon{
+    color:rgb(225, 45, 45);
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Main Page</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/styles/main.css">
+        
+    </head>
+    <body>
+        <!-- Hero section -->
+        <section class="hero-section">
+            <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <!-- Logo a la izquierda -->
+                <a class="navbar-brand te" href="index.html" data-aos="fade-right" data-aos-duration="1000">
+                    <i class="bi bi-film"></i>
+                    <span class="logo-text">
+                        CAC-Movies
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Contenido de la barra de navegación -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#tendencias">Tendencias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/register.html">Registrarse</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="pages/login.html">Log in</a>
+                </div>
+            </nav>
+            <div class="text-center position-absolute top-50 start-50 translate-middle">
+                <h1 class="text-danger display-2">Películas y series ilimitadas y mucho más.</h1>
+                <h3 class="text-danger">Disfruta donde quieras. Cancela cuando quieras.</h3>
+                <a type="button" href="pages/register.html" class="btn btn-danger">Register</a>
+            </div>
+        </section>
+        
+        <!-- Filter section -->
+        <section class="filter-section d-flex flex-column justify-content-center gap-3">
+            <h2 class="text-center display-3">Que estas buscando?</h2>
+            <form class="container">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Podes filtrar por pelicula">
+                </div>
+            </form>
+        </section>
+        <!-- Movies section -->
+        <section class="container">
+            <div class="row justify-content-center peliculas-render">
+
+            </div>
+            <div class="d-flex justify-content-center"> 
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary prev">Anterior</button>
+                    <button type="button" class="btn btn-primary next">Siguiente</button>
+                </div>
+            </div>
+            
+        </section>
+        <!-- TENDENCIAS SECTION -->
+        <section id="tendencias" class="container-fluid py-2">
+            <h2 class="text-center display-3">Las más aclamadas</h2>
+            <div class="container">
+                <div class="row text-center flex-nowrap overflow-auto top-peliculas">
+                    
+                </div>
+            </div>
+        </section>
+        <!-- Footer section -->
+        <footer>
+            <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+                <div class="navbar-collapse" id="navbarFooter">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Terminos y condiciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Preguntas Frecuentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ayuda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/update.html">CRUD Peliculas</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </footer>
+        <script src="assets/logic/index.js" type="module"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+    </body>
+</html>

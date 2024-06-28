@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/styles/main.css">
+    </head>
+    <body style="overflow-x: hidden;">
+        <!-- Hero section -->
+        <section>
+            <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <!-- Logo a la izquierda -->
+                <a class="navbar-brand" href="../index.html" data-aos="fade-right" data-aos-duration="1000">
+                    <i class="bi bi-film"></i>
+                    <span class="logo-text">
+                        CAC-Movies
+                    </span>
+                </a>
+                      
+                <!-- Contenido de la barra de navegación -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="register.html">Registrarse</a>
+                                </li>
+                            </ul>
+                            <a class="btn btn-outline-success my-2 my-sm-0" href="login.html">Log in</a>
+                </div>
+            </nav>
+        </section>
+        <section class="update-section" style="margin-top: 50px;">
+            <h2 >Cargar pelicula</h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <label class="visually-hidden" for="inlineFormInputName">Titulo</label>
+                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Titulo">
+                    </div>
+        
+                    <div class="col-md-2 mb-3">
+                        <label class="visually-hidden" for="inlineFormInputResumen">Resumen</label>
+                        <input type="text" class="form-control" id="inlineFormInputResumen" placeholder="Resumen">
+                    </div>
+        
+                    <div class="col-md-2 mb-3">
+                        <label class="visually-hidden" for="inlineFormInputEstreno">Fecha de estreno</label>
+                        <input type="date" class="form-control" id="inlineFormInputEstreno" placeholder="Fecha de estreno">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label class="visually-hidden" for="inlineFormPuntuacion">Puntuación</label>
+                        <input type="number" class="form-control" id="inlineFormPuntuacion" placeholder="Ingrese una puntuación">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label class="visually-hidden" for="inlineFormImagen">Imagen</label>
+                        <input type="text" class="form-control" id="inlineFormImagen" placeholder="Ingrese una url">
+                    </div>
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+            <h4 class="text-center">Listado de peliculas</h4>
+            <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Resumen</th>
+                    <th scope="col">Fecha de estreno</th>
+                    <th scope="col">Puntuacion</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="peliculas-tbody">
+                </tbody>
+            </table>
+        </section>
+        <script src="../assets/logic/update.js" type="module"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
