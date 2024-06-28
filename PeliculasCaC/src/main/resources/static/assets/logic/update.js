@@ -1,8 +1,7 @@
-import {fetchAllMovies} from './api.js'
-
+import {fetchAllMovies, deletePelicula} from './api.js'
 
 const renderizar = (pelicula, tbody) =>{
-    const tr = document.createElement('tr');
+    const tr = document.createElement('tr')
 
     tr.innerHTML = `
         <td>${pelicula.titulo_pelicula}</td>
@@ -16,10 +15,10 @@ const renderizar = (pelicula, tbody) =>{
         </td>
     `;
 
-    tbody.appendChild(tr);
+    tbody.appendChild(tr)
 
-    tr.querySelector('.edit-icon').addEventListener('click', () => editarPelicula(pelicula.id_pelicula));
-    tr.querySelector('.delete-icon').addEventListener('click', () => borrarPelicula(pelicula.id_pelicula));
+    tr.querySelector('.edit-icon').addEventListener('click', () => editarPelicula(pelicula.id_pelicula))
+    tr.querySelector('.delete-icon').addEventListener('click', () => borrarPelicula(pelicula.id_pelicula))
 
     return
 }
@@ -27,8 +26,8 @@ const renderizar = (pelicula, tbody) =>{
 const cargarPeliculas = async () =>{
     const peliculas = await fetchAllMovies()
 
-    const tbody = document.getElementById('peliculas-tbody');
-    tbody.innerHTML = ''; 
+    const tbody = document.getElementById('peliculas-tbody')
+    tbody.innerHTML = '' 
 
     peliculas.forEach(pelicula => {
         renderizar(pelicula, tbody)
@@ -37,13 +36,17 @@ const cargarPeliculas = async () =>{
 }
 
 const editarPelicula = (id) => {
-    console.log(`Editar pelicula con id: ${id}`);
-};
+    console.log(`Editar pelicula con id: ${id}`)
+}
 
 const borrarPelicula = (id) => {
-    console.log(`Borrar pelicula con id: ${id}`);
-};
+    deletePelicula(id)
+        .then(() => cargarPeliculas())
+        .catch(error => console.error('Error al eliminar la película:', error));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarPeliculas()
 })
+
+export {cargarPeliculas}

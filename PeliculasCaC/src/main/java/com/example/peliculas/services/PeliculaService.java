@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -40,15 +42,17 @@ public class PeliculaService {
         return new ResponseEntity<>(topPelicula.findAll(), HttpStatus.OK);
     }
 
-    public ResponseEntity<String> deleteByID(@PathVariable Integer id){
+    public ResponseEntity<Object> deleteByID(@PathVariable Integer id){
         Optional<Pelicula> pelicula = peliculaRepository.findById(id);
+        Map<String, Object> response = new HashMap<>();
 
         if (pelicula.isEmpty()) {
             throw new RuntimeException();
         }
 
+        response.put("message", "Pelicula borrada exitosamente con ID=" + pelicula.get().getId_pelicula());
         peliculaRepository.deleteById(id);
-        return new ResponseEntity<>("Pelicula eliminada.", HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     public ResponseEntity<String> updateByID(@PathVariable Integer id, @RequestBody Pelicula peli){
@@ -74,9 +78,11 @@ public class PeliculaService {
         }
     }
 
-    public ResponseEntity<String> createPelicula(@RequestBody Pelicula peli) {
+    public ResponseEntity<Object> createPelicula(@RequestBody Pelicula peli) {
         Pelicula pelicula = peliculaRepository.save(peli);
-        return new ResponseEntity<>("Pelicula creada exitosamente con ID=" + pelicula.getId_pelicula(), HttpStatus.CREATED);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Pelicula creada exitosamente con ID=" + pelicula.getId_pelicula());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 }

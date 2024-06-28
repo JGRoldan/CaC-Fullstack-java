@@ -31,7 +31,7 @@ public class PeliculaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteByID (@PathVariable Integer id){
+    public ResponseEntity<Object> deleteByID (@PathVariable Integer id){
         return peliculaService.deleteByID(id);
     }
 
@@ -41,7 +41,7 @@ public class PeliculaController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createPelicula(@RequestBody Pelicula pelicula){
+    public ResponseEntity<Object> createPelicula(@RequestBody Pelicula pelicula){
         return peliculaService.createPelicula(pelicula);
     }
 }
