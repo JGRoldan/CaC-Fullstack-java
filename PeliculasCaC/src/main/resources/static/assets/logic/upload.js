@@ -83,7 +83,6 @@ const uploadPelicula = () => {
 
 
 document.addEventListener('DOMContentLoaded', () =>{
-    editarPelicula()
     uploadPelicula()
 })
 
