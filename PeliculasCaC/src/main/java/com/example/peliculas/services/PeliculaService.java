@@ -32,6 +32,14 @@ public class PeliculaService {
         return new ResponseEntity<>(peliculaRepository.findAll(), HttpStatus.OK);
     }
 
+    public ResponseEntity<Pelicula> getPeliculaByID(@PathVariable Integer id){
+        Optional<Pelicula> pelicula = peliculaRepository.findById(id);
+        if (pelicula.isEmpty()) {
+            throw new RuntimeException();
+        }
+        return new ResponseEntity<Pelicula>(pelicula.get(), HttpStatus.OK);
+    }
+
     public ResponseEntity<Page<Pelicula>> getPeliculasPageable(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Pelicula> peliculasPage = peliculaRepository.findAll(pageable);
@@ -55,14 +63,15 @@ public class PeliculaService {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    public ResponseEntity<String> updateByID(@PathVariable Integer id, @RequestBody Pelicula peli){
+    public ResponseEntity<Object> updateByID(@PathVariable Integer id, @RequestBody Pelicula peli){
         try {
             Optional<Pelicula> pelicula = peliculaRepository.findById(id);
+            Map<String, Object> response = new HashMap<>();
 
             if (pelicula.isEmpty()) {
                 throw new RuntimeException();
             }
-
+            System.out.println(pelicula.get());
             Pelicula existingPelicula = pelicula.get();
             existingPelicula.setTitulo_pelicula(peli.getTitulo_pelicula());
             existingPelicula.setResumen_pelicula(peli.getResumen_pelicula());
@@ -71,7 +80,9 @@ public class PeliculaService {
             existingPelicula.setPoster_pelicula(peli.getPoster_pelicula());
 
             peliculaRepository.save(existingPelicula);
-            return new ResponseEntity<>("Pelicula actualizada exitosamente.", HttpStatus.OK);
+            response.put("message", "Pelicula actualizada exitosamente con ID=" + pelicula.get().getId_pelicula());
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>("Error interno del servidor.", HttpStatus.INTERNAL_SERVER_ERROR);

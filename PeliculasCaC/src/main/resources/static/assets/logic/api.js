@@ -6,6 +6,13 @@ const fetchApiMovies = async (numPage) => {
      return data
 }
 
+const fetchApiMovieByID = async (id) => {
+      const URL = `http://localhost:8081/api/peliculas/${id}`
+      const response = await fetch(URL)
+      const data = await response.json()
+      return data
+ }
+
 const fetchTopRatedMovies = async () => {
       const URL = `http://localhost:8081/api/peliculas/top_movies`
       const response = await fetch(URL)
@@ -32,7 +39,7 @@ const fetchUploadPelicula = async (data) =>{
       )
       if (!response.ok) {
             throw new Error('Error al subir la película: ' + response.statusText)
-        }
+      }
     
       return response.text()   
 }
@@ -45,6 +52,21 @@ const deletePelicula = async (id) =>{
 
       return response.text()  
 }
+
+const updatePelicula = async (id, data)=>{
+      const response = await fetch(
+            `http://localhost:8081/api/peliculas/${id}`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+      })
+      if (!response.ok) {
+            throw new Error('Error al subir la película: ' + response.statusText)
+      }
+      return response.text()   
+}
  
 
-export {fetchApiMovies, fetchTopRatedMovies, fetchAllMovies, fetchUploadPelicula, deletePelicula}
+export {fetchApiMovies, fetchTopRatedMovies, fetchAllMovies, fetchUploadPelicula, deletePelicula, fetchApiMovieByID, updatePelicula}

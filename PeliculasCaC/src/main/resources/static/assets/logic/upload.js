@@ -1,11 +1,40 @@
-import { fetchUploadPelicula } from "./api.js"
+import { fetchUploadPelicula, fetchApiMovieByID, updatePelicula } from "./api.js"
 import { swalAlert } from "./popup.js"
 import { cargarPeliculas } from "./update.js"
 
-const uploadPelicula = () =>{
+const btnAgregar = document.querySelector('.agregar-btn')
+const btnActualizar = document.querySelector('.actualizar-btn')
+
+const editarPelicula = async (id) => {
+    const pelicula = await fetchApiMovieByID(id) // <- OBJETO
     const form = document.getElementById('pelicula-form')
+    const titulo = document.getElementById('inlineFormInputName')
+    const resumen = document.getElementById('inlineFormInputResumen')
+    const fechaEstreno = document.getElementById('inlineFormInputEstreno')
+    const puntuacion = document.getElementById('inlineFormPuntuacion')
+    const imagen = document.getElementById('inlineFormImagen')
+
+    btnAgregar.style.display = 'none'
+    btnActualizar.style.display = 'block'
+
+    if (pelicula) {
+        titulo.value = pelicula.titulo_pelicula || ''
+        resumen.value = pelicula.resumen_pelicula || ''
+        const fechaEstrenoFormatted = new Date(pelicula.fecha_de_lanzamiento).toISOString().split('T')[0]
+        fechaEstreno.value = fechaEstrenoFormatted || ''
+        puntuacion.value = pelicula.promedio_pelicula || ''
+        imagen.value = pelicula.poster_pelicula || ''
+    }
+
+    form.setAttribute('data-mode', 'update')
+    form.setAttribute('data-id', id)
+}
+
+const uploadPelicula = () => {
+    const form = document.getElementById('pelicula-form')
+    
     form.addEventListener('submit', async (e) => {
-        e.preventDefault() 
+        e.preventDefault()
 
         const titulo = document.getElementById('inlineFormInputName').value
         const resumen = document.getElementById('inlineFormInputResumen').value
@@ -21,16 +50,41 @@ const uploadPelicula = () =>{
             poster_pelicula: imagen
         }
 
-        fetchUploadPelicula(nuevaPelicula)
-        .then(() => cargarPeliculas())
-        .catch(error => console.error('Error al subir la película:', error));
+        const mode = form.getAttribute('data-mode')
+        const id = form.getAttribute('data-id')
 
-        swalAlert('Pelicula agregada correctamente.')
+        if (mode === 'update' && id) {
+            try {
+                await updatePelicula(id, nuevaPelicula)
+                await cargarPeliculas()
+                swalAlert('Película editada correctamente.')
 
-        form.reset() 
+                btnAgregar.style.display = 'block'
+                btnActualizar.style.display = 'none'
+                form.removeAttribute('data-mode')
+                form.removeAttribute('data-id')
+                form.reset()
+            } catch (error) {
+                console.error('Error al subir la película:', error)
+            }
+        } else {
+            try {
+                await fetchUploadPelicula(nuevaPelicula)
+                await cargarPeliculas()
+                swalAlert('Película agregada correctamente.')
+
+                form.reset()
+            } catch (error) {
+                console.error('Error al subir la película:', error)
+            }
+        }
     })
 }
 
+
 document.addEventListener('DOMContentLoaded', () =>{
+    editarPelicula()
     uploadPelicula()
 })
+
+export { editarPelicula }

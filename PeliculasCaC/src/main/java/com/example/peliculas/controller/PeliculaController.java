@@ -20,6 +20,11 @@ public class PeliculaController {
     @GetMapping
     public ResponseEntity<List<Pelicula>> getPeliculas(){return peliculaService.getPeliculas();}
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Pelicula> getPeliculaByID(@PathVariable Integer id){
+        return peliculaService.getPeliculaByID(id);
+    }
+
     @GetMapping("/pagination")
     public ResponseEntity<Page<Pelicula>> getPageablePeliculas(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
         return peliculaService.getPeliculasPageable(page, size);
@@ -36,7 +41,7 @@ public class PeliculaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updatePelicula(@PathVariable Integer id, @RequestBody Pelicula pelicula){
+    public ResponseEntity<Object> updatePelicula(@PathVariable Integer id, @RequestBody Pelicula pelicula){
         return peliculaService.updateByID(id, pelicula);
     }
 

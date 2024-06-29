@@ -1,5 +1,6 @@
-import {fetchAllMovies, deletePelicula} from './api.js'
+import {fetchAllMovies, deletePelicula, fetchApiMovieByID, updatePelicula} from './api.js'
 import { swalAlert } from './popup.js'
+import { editarPelicula } from './upload.js'
 
 const renderizar = (pelicula, tbody) =>{
     const tr = document.createElement('tr')
@@ -14,7 +15,7 @@ const renderizar = (pelicula, tbody) =>{
             <i class="bi bi-pencil-square edit-icon" data-id="${pelicula.id_pelicula}"></i>
             <i class="bi bi-trash delete-icon" data-id="${pelicula.id_pelicula}"></i>
         </td>
-    `;
+    `
 
     tbody.appendChild(tr)
 
@@ -32,13 +33,8 @@ const cargarPeliculas = async () =>{
 
     peliculas.forEach(pelicula => {
         renderizar(pelicula, tbody)
-    });
+    })
     
-}
-
-const editarPelicula = (id) => {
-    console.log(`Editar pelicula con id: ${id}`)
-    swalAlert('Pelicula editada correctamente.')
 }
 
 const borrarPelicula = (id) => {
